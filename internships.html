@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实习与项目 · 宗栩翔 · 酱油色老抽</title>
+    <meta
+      name="description"
+      content="点击左侧实习1/实习2/实习3/项目，右侧显示对应的详细内容（根据腾讯内容创作PDF整理）。"
+    />
+    <style>
+      :root {
+        --primary: #b22a1f;
+        --primary-dark: #921f16;
+        --bg: #f5f3f1;
+        --text: #222222;
+        --muted: #666666;
+        --border: #e0d7cf;
+        --light: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.05fr 1.35fr;
+        background: var(--bg);
+      }
+
+      @media (max-width: 900px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .left-panel {
+        padding: 32px 40px;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--border);
+      }
+
+      @media (max-width: 900px) {
+        .left-panel {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          padding: 24px 20px 32px;
+        }
+      }
+
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 6px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 14px;
+        text-transform: uppercase;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-link {
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .back-link:hover {
+        border-color: rgba(178, 42, 31, 0.45);
+        box-shadow: 0 10px 22px rgba(178, 42, 31, 0.12);
+      }
+
+      .tabs-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly; /* 从上到下均匀分布 */
+        gap: 14px;
+        padding: 10px 0;
+      }
+
+      .tab-btn {
+        width: 100%;
+        border: 0;
+        background: #fff;
+        border-radius: 16px;
+        padding: 18px 18px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        text-align: left;
+        position: relative;
+        transition: transform 160ms ease, box-shadow 160ms ease,
+          border-color 160ms ease;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .tab-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 22px 56px rgba(0, 0, 0, 0.14);
+        z-index: 2;
+      }
+
+      .tab-title {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .tab-num {
+        color: var(--primary);
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .tab-label {
+        font-size: 18px;
+      }
+
+      .tab-subhint {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .tab-btn.active {
+        border-color: rgba(178, 42, 31, 0.42);
+        box-shadow: 0 20px 56px rgba(178, 42, 31, 0.16);
+      }
+
+      .tab-btn.active .tab-num {
+        color: var(--primary-dark);
+      }
+
+      .right-panel {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+      }
+
+      .right-image-wrapper {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top left,
+          #f7d5c9 0,
+          #7c1f18 40%,
+          #300e0c 100%
+        );
+      }
+
+      .right-content {
+        position: relative;
+        height: 100%;
+        padding: 32px 32px;
+        display: flex;
+        align-items: center; /* 右侧内容上下居中 */
+        justify-content: center;
+      }
+
+      @media (max-width: 900px) {
+        .right-content {
+          padding: 24px 18px;
+        }
+      }
+
+      .detail-card {
+        width: min(980px, 100%);
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 26px 68px rgba(0, 0, 0, 0.28);
+        padding: 22px 20px;
+      }
+
+      .detail-title {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        margin-bottom: 10px;
+        color: #1b1b1b;
+      }
+
+      .detail-overview {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(178, 42, 31, 0.9);
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .detail-meta {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .detail-section {
+        border-radius: 14px;
+        border: 1px solid rgba(178, 42, 31, 0.12);
+        background: rgba(178, 42, 31, 0.04);
+        padding: 14px 14px;
+      }
+
+      .detail-section h3 {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+      }
+
+      .detail-section ul {
+        list-style: none;
+      }
+
+      .detail-section li {
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: #2a2a2a;
+      }
+
+      .detail-section li:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="left-panel">
+        <header class="top-bar">
+          <div class="brand">ZONG · INTERNSHIPS</div>
+          <a class="back-link" href="personal-portfolio.html">返回首页</a>
+        </header>
+
+        <div class="tabs-wrap" role="tablist" aria-label="实习与项目切换">
+          <button class="tab-btn active" data-key="intern1" type="button">
+            <div class="tab-title">
+              <span class="tab-num">01</span>
+              <span class="tab-label">实习1</span>
+            </div>
+            <div class="tab-subhint">广州市优沃青少年发展中心</div>
+          </button>
+          <button class="tab-btn" data-key="intern2" type="button">
+            <div class="tab-title">
+              <span class="tab-num">02</span>
+              <span class="tab-label">实习2</span>
+            </div>
+            <div class="tab-subhint">作业帮教育科技（北京）</div>
+          </button>
+          <button class="tab-btn" data-key="intern3" type="button">
+            <div class="tab-title">
+              <span class="tab-num">03</span>
+              <span class="tab-label">实习3</span>
+            </div>
+            <div class="tab-subhint">广东映客互娱网络信息有限公司</div>
+          </button>
+          <button class="tab-btn" data-key="project" type="button">
+            <div class="tab-title">
+              <span class="tab-num">04</span>
+              <span class="tab-label">项目</span>
+            </div>
+            <div class="tab-subhint">社会热点评论垂类矩阵运营</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="right-panel" aria-label="详细内容">
+        <div class="right-image-wrapper"></div>
+        <div class="right-content">
+          <article class="detail-card" id="detailCard">
+            <div class="detail-overview">实习 & 项目概览</div>
+            <div class="detail-title" id="detailTitle"></div>
+            <div class="detail-meta" id="detailMeta"></div>
+
+            <div class="detail-grid">
+              <section class="detail-section">
+                <h3>职责要点</h3>
+                <ul id="detailBulletsLeft"></ul>
+              </section>
+              <section class="detail-section">
+                <h3>成果与产出</h3>
+                <ul id="detailBulletsRight"></ul>
+              </section>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const data = {
+          intern1: {
+            title: "实习1：新媒体运营专员",
+            meta: "广州市优沃青少年发展中心 · 2025.06 - 2025.08",
+            left: [
+              "负责机构线下活动新媒体内容全案落地",
+              "完成活动视频剪辑、品牌动画制作、推文排版、视觉物料设计等全流程工作",
+              "保障活动宣传全渠道落地",
+              "独立使用 AE 制作 1 分钟品牌历史动画，整合 12 届活动核心元素用于公众号推送（获得推荐）"
+            ],
+            right: [
+              "独立完成品牌历史动画交付，提升活动内容表达与传播质量",
+              "以“全案落地”的方式保障线上线下信息同步与一致性"
+            ]
+          },
+          intern2: {
+            title: "实习2：小红书实习生",
+            meta: "作业帮教育科技（北京）有限公司 · 2025.09 - 2025.11",
+            left: [
+              "负责作业帮小红书账号小学教辅类目内容全流程运营",
+              "适配平台流量逻辑与家长用户偏好",
+              "独立完成选题策划、文案撰写、视觉配图全流程",
+              "累计产出推广笔记 41 篇"
+            ],
+            right: [
+              "助力品牌在小学教辅赛道提升曝光与口碑",
+              "实现文案与视觉的协同产出，提高内容交付效率"
+            ]
+          },
+          intern3: {
+            title: "实习3：视频剪辑实习生",
+            meta: "广东映客互娱网络信息有限公司（映宇宙集团全资子公司）· 2025.12 - 2026.02",
+            left: [
+              "主导抖音、快手等平台商业化短剧素材制作",
+              "全流程负责脚本优化、剪辑落地、数据复盘等环节",
+              "深度拆解赛道头部素材与用户画像，提炼产品核心卖点与创意玩法",
+              "落地创意素材优化，提升素材过审率与投放生命周期"
+            ],
+            right: [
+              "累计产出投放素材近 3 万条（覆盖多账户投放）",
+              "单条素材最高消耗 1.5 万+；提升内容投放效率与表现"
+            ]
+          },
+          project: {
+            title: "项目：社会热点评论垂类全平台矩阵运营",
+            meta: "2025.01 - 2026.02 · 抖音/小红书/快手/视频号/哔哩哔哩全平台 · 多平台全生命周期运营",
+            left: [
+              "聚焦社会热点评论垂类，独立操盘全平台账号矩阵运营",
+              "完成账号定位、热点追踪、内容策划、AI 辅助制作、账号运营、数据复盘全流程管理",
+              "制定全平台差异化内容策略，匹配 PGC / 品牌商业 / 红人联动 / 用户 UGC 四类内容特性",
+              "搭建“热点预判 - 钩子设计 - 内容优化 - 数据复盘”的全链路数据模型",
+              "利用平台后台数据 + 第三方 AI 分析工具拆解 5 秒留存、完播率、互动率、涨粉率等指标"
+            ],
+            right: [
+              "AI 生成脚本与优化文案结构，内容产出效率提升 300%",
+              "累计产出原创短视频 24+ 条，全平台累计涨粉 3.3 万，总播放量超 5800 万",
+              "单条视频最高播放 900 万，最高涨粉 1.2 万+",
+              "沉淀出全平台适配的爆款内容全链路运营方法论，实现单账号冷启动与规模化内容产出"
+            ]
+          }
+        };
+
+        const titleEl = document.getElementById("detailTitle");
+        const metaEl = document.getElementById("detailMeta");
+        const leftUl = document.getElementById("detailBulletsLeft");
+        const rightUl = document.getElementById("detailBulletsRight");
+
+        const tabs = Array.from(document.querySelectorAll(".tab-btn"));
+
+        const render = (key) => {
+          const item = data[key];
+          if (!item) return;
+
+          titleEl.textContent = item.title;
+          metaEl.textContent = item.meta;
+
+          leftUl.innerHTML = "";
+          item.left.forEach((t) => {
+            const li = document.createElement("li");
+            li.textContent = t;
+            leftUl.appendChild(li);
+          });
+
+          rightUl.innerHTML = "";
+          item.right.forEach((t) => {
+            const li = document.createElement("li");
+            li.textContent = t;
+            rightUl.appendChild(li);
+          });
+        };
+
+        tabs.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            tabs.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            render(btn.dataset.key);
+          });
+        });
+
+        // initial
+        render("intern1");
+      })();
+    </script>
+  </body>
+</html>
+

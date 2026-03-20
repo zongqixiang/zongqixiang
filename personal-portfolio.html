@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>宗祺翔 · 个人网站 · 酱油色老抽</title>
+    <meta
+      name="description"
+      content="宗祺翔 · 华南理工大学传播学专业学生 & 自媒体博主，新媒体 / 内容运营 / 短视频内容创作求职主页。"
+    />
+    <style>
+      :root {
+        --primary: #b22a1f;
+        --primary-dark: #921f16;
+        --bg: #f5f3f1;
+        --text: #222222;
+        --muted: #666666;
+        --border: #e0d7cf;
+        --light: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.2fr 1.3fr;
+        background: var(--bg);
+      }
+
+      @media (max-width: 900px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .left-panel {
+        padding: 32px 40px;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-right: 1px solid var(--border);
+      }
+
+      @media (max-width: 900px) {
+        .left-panel {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          padding: 24px 20px 32px;
+        }
+      }
+
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 6px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 14px;
+        text-transform: uppercase;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(6px);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+      }
+
+      .menu-dots {
+        display: flex;
+        gap: 3px;
+      }
+
+      .menu-dots span {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--text);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 40px;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+        }
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        max-width: 30rem;
+        margin-bottom: 26px;
+      }
+
+      .subtitle strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background: rgba(178, 42, 31, 0.06);
+      }
+
+      .summary-list {
+        list-style: none;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .summary-list li + li {
+        margin-top: 6px;
+      }
+
+      .summary-list strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-top: 1px solid var(--border);
+        padding-top: 14px;
+        margin-top: 24px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .social-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        background: var(--light);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .social-icon:hover {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .right-panel {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .right-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 420px;
+        background: radial-gradient(
+          circle at top left,
+          #f7d5c9 0,
+          #7c1f18 40%,
+          #300e0c 100%
+        );
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .portrait-card {
+        position: relative;
+        width: 100%;
+        max-width: 620px;
+        margin: auto;
+        padding: 32px 26px;
+        display: grid;
+        grid-template-columns: 3fr 2.4fr;
+        gap: 22px;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .portrait-card {
+          grid-template-columns: 1fr;
+          padding: 24px 18px 32px;
+          max-width: 480px;
+        }
+      }
+
+      .portrait-photo {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        background: linear-gradient(135deg, #9f1f17, #260806);
+        aspect-ratio: 3/4;
+      }
+
+      .resume-trigger {
+        position: absolute;
+        inset: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .resume-trigger:focus-visible {
+        outline: 2px solid rgba(178, 42, 31, 0.85);
+        outline-offset: 6px;
+        border-radius: 18px;
+      }
+
+      .portrait-photo-inner {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: scale(1);
+        transition: transform 220ms ease;
+        transform-origin: center;
+        filter: saturate(1.05) contrast(1.02);
+      }
+
+      .resume-trigger:hover .portrait-photo-inner {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 600px) {
+        .portrait-photo {
+          aspect-ratio: 3/3.8;
+        }
+      }
+
+      .badge {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.92);
+        color: #000;
+      }
+
+      .badge span {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .stat-pill {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        padding: 8px 12px;
+        border-radius: 18px;
+        font-size: 11px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.72);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .stat-pill strong {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .side-panel {
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: 18px;
+        padding: 20px 18px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: var(--text);
+      }
+
+      .side-title {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--primary-dark);
+      }
+
+      .side-item-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .side-item-content {
+        font-size: 13px;
+      }
+
+      .timeline-preview {
+        border-left: 2px solid var(--border);
+        padding-left: 10px;
+        margin-top: 4px;
+      }
+
+      .timeline-node {
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .timeline-node::before {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: 6px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--primary);
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .chip {
+        font-size: 11px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: #f3ece6;
+        color: #5b4633;
+      }
+
+      /* Fullscreen image modal with zoom/drag */
+      .image-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        padding: 18px;
+      }
+
+      .image-modal.open {
+        display: flex;
+      }
+
+      .image-modal-dialog {
+        width: min(1400px, 96vw);
+        height: min(900px, 92vh);
+        background: rgba(20, 20, 20, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .image-modal-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.22);
+      }
+
+      .tool-btn {
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .tool-btn:hover {
+        background: rgba(178, 42, 31, 0.22);
+        border-color: rgba(178, 42, 31, 0.5);
+      }
+
+      .tool-btn.primary {
+        background: rgba(178, 42, 31, 0.35);
+        border-color: rgba(178, 42, 31, 0.55);
+      }
+
+      .image-modal-hint {
+        margin-left: auto;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        white-space: nowrap;
+      }
+
+      .image-modal-viewport {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.1);
+        cursor: grab;
+      }
+
+      .image-modal-viewport:active {
+        cursor: grabbing;
+      }
+
+      .image-modal-translate {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        will-change: transform;
+      }
+
+      .image-modal-scale {
+        transform-origin: center;
+        will-change: transform;
+      }
+
+      .image-modal-img {
+        display: block;
+        max-width: none;
+        max-height: none;
+        user-select: none;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="left-panel">
+        <header class="top-bar">
+          <div class="brand">ZONG · PORTFOLIO</div>
+          <button class="menu-button" type="button" aria-label="菜单">
+            <span>MENU</span>
+            <div class="menu-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </button>
+        </header>
+
+        <section>
+          <div class="eyebrow">HI, MY NAME IS</div>
+          <h1>
+            宗祺翔<br />
+            学生 &amp; 自媒体博主
+          </h1>
+          <p class="subtitle">
+            华南理工大学传播学专业在读。本网站面向
+            <strong>新媒体 / 内容运营 / 内容创作 / 内容创意</strong>
+            岗位面试官，展示我在
+            <strong>短视频账号从 0 到 1</strong> 的实战经历，以及对内容增长与用户洞察的理解。
+          </p>
+
+          <div class="cta-row">
+            <a href="internships.html" class="btn btn-primary">查看实习与项目</a>
+          </div>
+
+          <ul class="summary-list">
+            <li><strong>教育背景：</strong>华南理工大学 · 传播学专业（预计 2027 年毕业）</li>
+            <li><strong>实习经验：</strong>覆盖互联网公司、教育机构、青少年发展中心，熟悉选题—拍摄—剪辑—分发全流程</li>
+            <li><strong>账号运营：</strong>独立运营「酱油色老抽」个人短视频账号，在抖音、快手、小红书、哔哩哔哩等平台持续更新</li>
+          </ul>
+        </section>
+
+        <footer class="footer-bar">
+          <div>Copyright © 2026 宗祺翔 · 酱油色老抽</div>
+          <div class="social-row" aria-label="社交媒体链接">
+            <a
+              class="social-icon"
+              href="https://v.douyin.com/s719tgWokbl/4@8.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="抖音主页"
+              >抖</a
+            >
+            <a
+              class="social-icon"
+              href="https://xhslink.com/m/K2AOcL94Ik"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="小红书主页"
+              >书</a
+            >
+            <a
+              class="social-icon"
+              href="https://v.kuaishou.com/JXab20sx"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="快手主页"
+              >快</a
+            >
+            <a
+              class="social-icon"
+              href="https://b23.tv/mwmyfAo"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="哔哩哔哩主页"
+              >B</a
+            >
+          </div>
+        </footer>
+      </section>
+
+      <section class="right-panel" id="internships">
+        <div class="right-image-wrapper">
+          <div class="portrait-card">
+            <div class="portrait-photo">
+              <button
+                id="resumeTrigger"
+                class="resume-trigger"
+                type="button"
+                aria-label="点击查看个人简历放大视图"
+              >
+                <img
+                  id="resumeImg"
+                  class="portrait-photo-inner"
+                  src="assets/resume-photo.png"
+                  alt="个人简历图片预览"
+                />
+              </button>
+              <div class="badge">
+                NEW MEDIA · <span>CONTENT</span>
+              </div>
+              <div class="stat-pill">
+                <strong>3+ EXPS</strong>
+                <span>实习 / 账号运营</span>
+              </div>
+            </div>
+
+            <aside class="side-panel">
+              <div>
+                <div class="side-title">实习 &amp; 项目概览</div>
+                <p class="side-item-content">
+                  参与互联网公司、教育机构与青少年发展中心的新媒体项目，覆盖
+                  <strong>选题策划、视频剪辑、活动宣传、账号运营</strong> 全流程，并从 0
+                  搭建个人 IP 账号「酱油色老抽」。
+                </p>
+              </div>
+
+              <div>
+                <div class="side-item-label">INTERNSHIP TIMELINE</div>
+                <div class="timeline-preview">
+                  <div class="timeline-node">
+                    2025.12 – 2026.02 · 广东歌艾互联网信息有限公司 · 视频剪辑实习生
+                  </div>
+                  <div class="timeline-node">
+                    2025.09 – 2025.10 · 晨曦教育科技（北京）有限公司 · 短视频剪辑/新媒体实习生
+                  </div>
+                  <div class="timeline-node">
+                    2025.01 – 2025.05 · 广州市沐沄青少年发展中心 · 新媒体运营专员
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="side-item-label">FOCUS</div>
+                <div class="chip-row">
+                  <span class="chip">新媒体运营</span>
+                  <span class="chip">短视频剪辑</span>
+                  <span class="chip">内容策划</span>
+                  <span class="chip">数据复盘</span>
+                  <span class="chip">教育 / 青少年内容</span>
+                  <span class="chip">个人 IP 运营</span>
+                </div>
+              </div>
+
+              <div id="contact">
+                <div class="side-item-label">CONTACT</div>
+                <div class="side-item-content">
+                  邮箱：<a href="mailto:2654582890@qq.com">2654582890@qq.com</a><br />
+                  电话：17637209420<br />
+                  <span style="font-size: 12px; color: var(--muted)">
+                    如果你正在寻找一位懂内容、会剪辑、能从 0 运营账号的实习生，非常期待与你进一步交流。
+                  </span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Fullscreen resume image modal (hover 1.1x, click fullscreen + zoom/drag) -->
+    <div
+      id="imageModal"
+      class="image-modal"
+      aria-hidden="true"
+      aria-label="个人简历放大视图"
+    >
+      <div class="image-modal-dialog" role="dialog" aria-modal="true">
+        <div class="image-modal-toolbar">
+          <button id="zoomOut" class="tool-btn" type="button" aria-label="缩小">
+            -
+          </button>
+          <button id="zoomIn" class="tool-btn" type="button" aria-label="放大">
+            +
+          </button>
+          <button
+            id="zoomReset"
+            class="tool-btn primary"
+            type="button"
+            aria-label="重置视图"
+          >
+            重置
+          </button>
+          <button id="closeModal" class="tool-btn" type="button" aria-label="关闭">
+            关闭
+          </button>
+          <div class="image-modal-hint">滚轮缩放 · 拖拽平移 · Esc关闭</div>
+        </div>
+
+        <div id="modalViewport" class="image-modal-viewport">
+          <div id="modalTranslate" class="image-modal-translate">
+            <div id="modalScale" class="image-modal-scale">
+              <img
+                id="modalImg"
+                class="image-modal-img"
+                src=""
+                alt="个人简历放大图片"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const modal = document.getElementById("imageModal");
+        const trigger = document.getElementById("resumeTrigger");
+        const previewImg = document.getElementById("resumeImg");
+        const closeBtn = document.getElementById("closeModal");
+
+        const viewport = document.getElementById("modalViewport");
+        const translateEl = document.getElementById("modalTranslate");
+        const scaleEl = document.getElementById("modalScale");
+        const modalImg = document.getElementById("modalImg");
+
+        const zoomInBtn = document.getElementById("zoomIn");
+        const zoomOutBtn = document.getElementById("zoomOut");
+        const zoomResetBtn = document.getElementById("zoomReset");
+
+        if (!modal || !trigger || !previewImg || !closeBtn) return;
+        if (!viewport || !translateEl || !scaleEl || !modalImg) return;
+        if (!zoomInBtn || !zoomOutBtn || !zoomResetBtn) return;
+
+        let scale = 1;
+        let tx = 0;
+        let ty = 0;
+        let dragging = false;
+        let startX = 0;
+        let startY = 0;
+        let startTx = 0;
+        let startTy = 0;
+
+        const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+        const applyTransforms = () => {
+          translateEl.style.transform = `translate(-50%, -50%) translate(${tx}px, ${ty}px)`;
+          scaleEl.style.transform = `scale(${scale})`;
+        };
+
+        const fitToViewport = () => {
+          const vw = viewport.clientWidth;
+          const vh = viewport.clientHeight;
+          const iw = modalImg.naturalWidth || 1;
+          const ih = modalImg.naturalHeight || 1;
+
+          // Fill viewport by scaling up/down as needed.
+          scale = clamp(Math.min(vw / iw, vh / ih), 0.25, 6);
+          tx = 0;
+          ty = 0;
+          applyTransforms();
+        };
+
+        const openModal = () => {
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+
+          modalImg.src = previewImg.src;
+
+          const onReady = () => {
+            fitToViewport();
+            closeBtn.focus();
+          };
+
+          if (modalImg.complete) onReady();
+          else modalImg.onload = onReady;
+        };
+
+        const closeModal = () => {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          trigger.focus();
+        };
+
+        trigger.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+
+        // Click backdrop to close
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // Esc to close
+        window.addEventListener("keydown", (e) => {
+          if (modal.classList.contains("open") && e.key === "Escape") closeModal();
+        });
+
+        const setScale = (next) => {
+          scale = clamp(next, 0.25, 10);
+          applyTransforms();
+        };
+
+        zoomInBtn.addEventListener("click", () => setScale(scale * 1.2));
+        zoomOutBtn.addEventListener("click", () => setScale(scale / 1.2));
+        zoomResetBtn.addEventListener("click", () => fitToViewport());
+
+        // Wheel zoom
+        viewport.addEventListener(
+          "wheel",
+          (e) => {
+            if (!modal.classList.contains("open")) return;
+            e.preventDefault();
+            const factor = e.deltaY > 0 ? 0.9 : 1.1;
+            setScale(scale * factor);
+          },
+          { passive: false }
+        );
+
+        // Drag to pan
+        viewport.addEventListener("pointerdown", (e) => {
+          if (!modal.classList.contains("open")) return;
+          dragging = true;
+          viewport.setPointerCapture(e.pointerId);
+          startX = e.clientX;
+          startY = e.clientY;
+          startTx = tx;
+          startTy = ty;
+        });
+
+        viewport.addEventListener("pointermove", (e) => {
+          if (!dragging) return;
+          tx = startTx + (e.clientX - startX);
+          ty = startTy + (e.clientY - startY);
+          applyTransforms();
+        });
+
+        viewport.addEventListener("pointerup", () => {
+          dragging = false;
+        });
+      })();
+    </script>
+  </body>
+</html>
+
